@@ -51,8 +51,8 @@ int SearchForNewlinesWithNeedle(char* filename, char* cNeedle) {
 	ssize_t ssIndex = 0;
 
 	MSVCRT$fopen_s(&fpFilePointer, filename, "r");
-    if ( fpFilePointer == NULL ) {
-        BeaconPrintf(CALLBACK_ERROR, "Unable to open the desired file for reading: %s\n", filename);
+	if ( fpFilePointer == NULL ) {
+		BeaconPrintf(CALLBACK_ERROR, "Unable to open the desired file for reading: %s\n", filename);
 		return EXIT_FAILURE;
 	}
 
@@ -95,26 +95,26 @@ int SearchForNewlinesWithNeedle(char* filename, char* cNeedle) {
 
 
 void go (char* args, int len) {
-    datap parser;
-    char *cFileName = NULL;
-    char *cNeedle   = NULL;
+	datap parser;
+	char *cFileName = NULL;
+	char *cNeedle   = NULL;
 
-    LPCWSTR lpDBanner =    L"-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-\n"
-                           L"|           String Sifter           |\n"
-                           L"-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-\n"
-                           L"| By:                               |\n"
-                           L"|          @the_bit_diddler         |\n"
-                           L"-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-\n";
+	LPCWSTR lpDBanner =    L"-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-\n"
+						   L"|           String Sifter           |\n"
+						   L"-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-\n"
+						   L"| By:                               |\n"
+						   L"|          @the_bit_diddler         |\n"
+						   L"-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-\n";
 
-    BeaconPrintf(CALLBACK_OUTPUT, "%ls\n", (wchar_t*)lpDBanner);
+	BeaconPrintf(CALLBACK_OUTPUT, "%ls\n", (wchar_t*)lpDBanner);
 
-    BeaconDataParse(&parser, args, len);
+	BeaconDataParse(&parser, args, len);
 
-    cFileName = BeaconDataExtract(&parser, NULL);
-    cNeedle   = BeaconDataExtract(&parser, NULL);
-    
-    BeaconPrintf(CALLBACK_OUTPUT, "Current filename: %s\n", cFileName);
-    BeaconPrintf(CALLBACK_OUTPUT, "Current needle:   %s\n", cNeedle);
+	cFileName = BeaconDataExtract(&parser, NULL);
+	cNeedle   = BeaconDataExtract(&parser, NULL);
+	
+	BeaconPrintf(CALLBACK_OUTPUT, "Current filename: %s\n", cFileName);
+	BeaconPrintf(CALLBACK_OUTPUT, "Current needle:   %s\n", cNeedle);
 
-    SearchForNewlinesWithNeedle(cFileName, cNeedle);
+	SearchForNewlinesWithNeedle(cFileName, cNeedle);
 }
