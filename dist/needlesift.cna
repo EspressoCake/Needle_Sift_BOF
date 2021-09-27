@@ -1,0 +1,25 @@
+beacon_command_register(
+"needle_sift",
+"Search a file, line by line, for a relevant string's existence.",
+"Synopsis: needle_sift path_to_filename string_to_search");
+
+alias needle_sift {
+    local('$handle $args $data');
+
+    $handle = openf(script_resource("needle_sift.x64.o"));
+    $data = readb($handle, -1);
+    closef($handle);
+    
+    if ( size(@_) != 3 ) {
+        println("Not enough arguments:");
+        println(@_);
+
+        return;
+    } else {
+        println(@_);
+    }
+
+    $args = bof_pack($1, "zz", $2, $3);
+    
+    beacon_inline_execute($1, $data, "go", $args);
+}
