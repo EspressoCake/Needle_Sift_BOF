@@ -19,3 +19,4 @@ Why not? Supply what you want, and don't worry about downloading an entire file 
 ## Any known downsides?
 - We're still using the `Win32` API and `Dynamic Function Resolution`.  This is for you to determine as far as "risk"
 - There's a user-defined cap on what we want the total length of a line to be. (I didn't want to do anything with a heap allocation, and favored some semblance of stability)
+- This is currently *case-sensitive* as I didn't come across a more agnostic solution
